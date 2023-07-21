@@ -1,2 +1,3 @@
 # client
-Client with Vue
+
+Web client with Vue
