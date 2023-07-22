@@ -21,7 +21,7 @@ export default {
 }
 </script>
 <template>
-  <nav id="navbar" class="navbar navbar-expand-lg fixed-top" v-on:scroll="">
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <RouterLink class="navbar-brand fw-bold" to="/">
         <h3 class="text-white">ScholarPal</h3>

@@ -38,13 +38,13 @@ export default {
       <div class="row align-items-stretch gap-3 justify-content-center mt-5">
         <div class="col-5 d-flex flex-column justify-content-center align-items-center gap-4">
           <img class="img-fluid" width="55%"
-            src="https://www.ratemyprofessors.com/static/media/instructional-slide-pencil-lady.492f2289.svg" alt="">
-          <h3 class="fw-bold text-center">Manage and edit your ratings</h3>
+            src="../assets/editing.png" alt="">
+          <h3 class="fw-bold text-center mt-auto">Manage and edit your ratings</h3>
         </div>
         <div class="col-5 d-flex flex-column justify-content-center align-items-center gap-4">
           <img class="img-fluid" width="55%"
-            src="https://www.ratemyprofessors.com/static/media/instructional-slide-mystery-lady.bf022e31.svg" alt="">
-          <h3 class="fw-bold text-center">Your ratings are always anonymous</h3>
+            src="../assets/anonymous.svg" alt="">
+          <h3 class="fw-bold text-center mt-auto">Your ratings are always anonymous</h3>
         </div>
       </div>
       <div class="row mt-5">

@@ -98,12 +98,17 @@ export default {
               <div class="d-flex gap-2 align-items-center">
                 <label for="">Rate</label>
                 <select class="form-select" name="" id="" style="font-family: 'FontAwesome','sans-serif';">
-                  <option value=""><span style="color: yellow;">&#xf005;</span></option>
+                  <option value=""><span v-for="i in 5">&#xf005;</span></option>
+                  <option value=""><span v-for="i in 4">&#xf005;</span></option>
+                  <option value=""><span v-for="i in 3">&#xf005;</span></option>
+                  <option value=""><span v-for="i in 2">&#xf005;</span></option>
+                  <option value=""><span>&#xf005;</span></option>
+                  <!-- <option value=""><img src="../assets/." alt=""></option> -->
                 </select>
               </div>
               <div class="d-flex gap-2 align-items-center">
                 <label for="">For </label>
-                <select class="form-select" name="" id="" style="width:180px">
+                <select class="form-select" name="" id="">
                   <option value="" selected disabled>Select a category</option>
                   <option value="">Facility</option>
                   <option value="">Organization</option>
@@ -134,8 +139,8 @@ export default {
             <span class="d-flex gap-2">
               <div class="d-flex gap-2 align-items-center" style="height: 30px;">
                 <label for="">Category</label>
-                <select class="form-select" name="" id="" style="width:120px">
-                  <option value="">Select One</option>
+                <select class="form-select" name="" id="" style="width:10rem">
+                  <option value="" disabled selected>Select One</option>
                   <option value="">Facility</option>
                   <option value="">Hygine</option>
                   <option value="">Food & Beverage</option>
