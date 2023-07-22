@@ -1,18 +1,7 @@
 <script>
 export default {
   name: "App",
-  mounted() {
-    let nav = document.getElementById("navbar")
-    document.addEventListener('scroll', () => {
-      console.log("ke trigger..");
-      if (window.scrollY >= nav.getBoundingClientRect().height) {
-        nav.classList.add("bg-dark");
-      } else {
-        nav.classList.remove("bg-dark");
-      }
-    })
 
-  }
 }
 </script>
 
