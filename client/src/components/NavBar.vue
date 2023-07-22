@@ -40,18 +40,14 @@ export default {
           <RouterLink class="nav-link" to="/profile" v-if="isLogin">Profile</RouterLink>
         </div>
         <div class="ms-auto">
-
           <span class="d-flex gap-3 align-items-center" v-if="isLogin">
             <img class="rounded-circle img-fluid border border-white border-2 text-white" style="width: 3rem;"
               src="@/assets/user.png" alt="">
             <span class="text-white"><b>@USERNAME</b></span>
-
           </span>
           <span class="d-flex gap-3" v-if="!isLogin">
-            <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log
-              in</a>
-            <a data-bs-toggle="modal" data-bs-target="#SignUp"
-              class="btn btn-light bg-white fw-bold rounded-pill px-4">Sign Up</a>
+            <div class="g_id_signin">
+            </div>
           </span>
         </div>
       </div>
