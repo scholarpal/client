@@ -3,8 +3,20 @@ import { mapState } from 'pinia'
 import { useMainStore } from '../stores/store'
 
 export default {
+  data() {
+    return {
+      username: ""
+    }
+  },
   computed: {
     ...mapState(useMainStore, ["isLogin"])
+  },
+  watch: {
+    isLogin(value) {
+      if (value) {
+        this.username = localStorage.username
+      }
+    }
   },
   mounted() {
     let nav = document.getElementById("navbar")
@@ -47,19 +59,21 @@ export default {
               class="d-flex gap-3 align-items-center text-decoration-none" v-if="isLogin">
               <img class="rounded-circle img-fluid border border-white border-2 text-white" style="width: 3rem;"
                 src="../assets/user.png" alt="">
-              <span class="text-white"><b>@USERNAME</b></span>
+              <span class="text-white"><b>@{{ username }}</b></span>
             </a>
 
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><RouterLink class="dropdown-item fw-bold" to="/profile">Profile</RouterLink></li>
-              <li><RouterLink class="dropdown-item text-danger fw-bold" to="/">Log Out</RouterLink></li>
+              <li>
+                <RouterLink class="dropdown-item fw-bold" to="/profile">Profile</RouterLink>
+              </li>
+              <li>
+                <RouterLink class="dropdown-item text-danger fw-bold" to="/">Log Out</RouterLink>
+              </li>
             </ul>
           </div>
           <span class="d-flex gap-3" v-if="!isLogin">
-            <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log
-              in</a>
-            <a data-bs-toggle="modal" data-bs-target="#SignUp"
-              class="btn btn-light bg-white fw-bold rounded-pill px-4">Sign Up</a>
+            <div class="g_id_signin">
+            </div>
           </span>
         </div>
       </div>
