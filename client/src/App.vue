@@ -1,60 +1,41 @@
 <script>
+import axios from "axios"
+import NavBar from "./components/NavBar.vue"
 export default {
-  name: "App",
-  mounted() {
-    let nav = document.getElementById("navbar")
-
-    if (document.URL !== "http://localhost:5173/" && document.URL !== "http://localhost:5173/profile") {
-      nav.classList.add("bg-dark");
+  components: {
+    NavBar
+  },
+  methods: {
+    handleCredentialResponse(response) {
+      document.getElementsByClassName("btn-close")[0].click()
+      document.getElementsByClassName("continue-otp")[0].click()
+      axios({
+        method: "POST",
+        url: "http://localhost:3000/google-sign-in"
+      })
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
-    document.addEventListener('scroll', () => {
-      if (document.URL == "http://localhost:5173/") {
-        if (window.scrollY >= nav.getBoundingClientRect().height) {
-          nav.classList.add("bg-dark");
-        } else {
-          nav.classList.remove("bg-dark");
-        }
-      }
-    })
+  },
+  mounted() {
+    google.accounts.id.initialize({
+      client_id: "74889742184-2dkn63tpgecjde551g8j9lqkn5or0o7t.apps.googleusercontent.com",
+      callback: this.handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
   }
-
 }
 </script>
 <template>
-  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <RouterLink class="navbar-brand fw-bold" to="/">
-        <h3 class="text-white">ScholarPal</h3>
-      </RouterLink>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <RouterLink class="nav-link" to="/">Home</RouterLink>
-          <RouterLink class="nav-link" to="/events">Events</RouterLink>
-          <RouterLink class="nav-link" to="/profile">Profile</RouterLink>
-        </div>
-        <div class="ms-auto">
-
-          <span class="d-flex gap-3" v-if="isLogin">
-            <a href="#" class="rounded-circle border border-white border-2" style="width: 3rem;">
-              <img src="@/assets/user.png" class="img-fluid" alt="">
-            </a>
-          </span>
-          <span class="d-flex gap-3" v-if="!isLogin">
-            <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log
-              in</a>
-            <a data-bs-toggle="modal" data-bs-target="#SignUp"
-              class="btn btn-light bg-white fw-bold rounded-pill px-4">Sign Up</a>
-          </span>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <NavBar />
   <RouterView />
-
   <div class="modal fade" id="SignUp" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -73,9 +54,14 @@ export default {
               <input type="password" class="form-control rounded-pill w-100" placeholder="Create a password">
             </form>
             <a data-bs-target="#SignUp2" data-bs-dismiss="modal" data-bs-toggle="modal"
-              class="btn btn-dark rounded-pill py-2 w-100">Continue</a>
+              class="btn btn-dark rounded-pill py-2 w-100 continue-otp">Continue</a>
           </div>
         </div>
+        <a href="" data-bs-target="#SignUp2" data-bs-dismiss="modal" data-bs-toggle="modal"
+          class="d-flex justify-content-center align-items-center pt-2 pb-3">
+          <div class="g_id_signin">
+          </div>
+        </a>
 
         <div class="d-flex justify-content-center mb-4">
           <p>Already have an account? <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#LogIn"
@@ -138,21 +124,9 @@ export default {
 </template>
 
 <style scoped>
-.navbar {
-  transition: 0.2s all ease-in-out;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.navbar-nav .nav-link {
-  color: white !important;
-}
-
-.navbar.nav-bg {
-  background-color: white;
 }
 </style>
