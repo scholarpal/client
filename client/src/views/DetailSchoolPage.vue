@@ -22,10 +22,10 @@ export default {
     setExpand() {
       this.expand = !this.expand
       let ratebutton = document.getElementById("expand");
-      if(this.expand){
+      if (this.expand) {
         ratebutton.classList.add("d-none");
       }
-      else{
+      else {
         ratebutton.classList.remove("d-none");
       }
     }
@@ -66,7 +66,7 @@ export default {
           <h2>SMA Labschool Jakarta</h2>
           <div class="w-100 pt-2">
             <p>Overall score by our user is <b>8.70</b></p>
-            <div v-for="a in 5" class="mb-2 d-flex d-flex align-items-end">
+            <div v-for="a in 4" class="mb-2 d-flex d-flex align-items-end">
               <div class="w-75 mt-1">
                 <span class="fw-bold">Facility</span>
                 <div class="progress ">
@@ -84,14 +84,14 @@ export default {
         <div class="mb-5 d-flex flex-column justify-content-center gap-3">
           <div class="d-flex gap-3 align-items-center">
             <h3>Rate your school?</h3>
-            <button @click="setExpand" class="rounded btn btn-primary border-0 fw-bold ms-auto d-none" style="background-color: #88c4cc;" id="expand" type="button">Rate Now</button>
+            <button @click="setExpand" class="rounded btn btn-primary border-0 fw-bold ms-auto d-none"
+              style="background-color: #88c4cc;" id="expand" type="button">Rate Now</button>
             <!-- <div class="form-check form-switch d-flex gap-2">
               <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" v-on:change="setExpand" checked>
               <label class="form-check-label" for="flexSwitchCheckChecked">
                 <h6>{{ text }}</h6>
               </label>
             </div> -->
-            
           </div>
           <form v-if="expand" class="border p-2 rounded" style="background-color: #c4d4d6;">
             <div class="d-flex gap-2 my-3 align-items-center" style="height: 30px;">
@@ -101,8 +101,6 @@ export default {
                   <option value=""><span style="color: yellow;">&#xf005;</span></option>
                 </select>
               </div>
-              
-
               <div class="d-flex gap-2 align-items-center">
                 <label for="">For </label>
                 <select class="form-select" name="" id="" style="width:180px">
@@ -130,7 +128,8 @@ export default {
         </div>
 
         <div class="rounded pb-2" style="background-color: #c4d4d6;">
-          <div class="w-100 p-3 rounded-top d-flex flex-column justify-content-between" style="background-color: #c4d4d6;">
+          <div class="w-100 p-3 rounded-top d-flex flex-column justify-content-between"
+            style="background-color: #c4d4d6;">
             <span class="mb-0 fw-bold" style="font-size: 18px;">Filter :</span>
             <span class="d-flex gap-2">
               <div class="d-flex gap-2 align-items-center" style="height: 30px;">
@@ -138,9 +137,9 @@ export default {
                 <select class="form-select" name="" id="" style="width:120px">
                   <option value="">Select One</option>
                   <option value="">Facility</option>
+                  <option value="">Hygine</option>
+                  <option value="">Food & Beverage</option>
                   <option value="">Clubs</option>
-                  <option value="">Class</option>
-                  <option value="">Canteen</option>
                 </select>
               </div>
               <div class="d-flex gap-2 align-items-center" style="height: 30px;">
@@ -185,7 +184,7 @@ export default {
                     </label>
                   </div>
                 </div>
-  
+
               </div>
             </span>
           </div>
