@@ -17,10 +17,10 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <!-- <RouterLink class="nav-link" to="/">Home</RouterLink>
+          <RouterLink class="nav-link" to="/">Home</RouterLink>
           <RouterLink class="nav-link" to="/schools">Schools</RouterLink>
           <RouterLink class="nav-link" to="/events">Events</RouterLink>
-          <RouterLink class="nav-link" to="/profile">Profile</RouterLink> -->
+          <RouterLink class="nav-link" to="/profile">Profile</RouterLink>
         </div>
         <div class="ms-auto">
 
@@ -133,7 +133,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.navbar-nav .nav-link{
+  color: white !important;
+}
 .navbar.nav-bg {
   background-color: white;
 }
