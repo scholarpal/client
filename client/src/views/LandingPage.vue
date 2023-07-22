@@ -29,6 +29,7 @@ export default {
             id="search" placeholder="Search your school" list="datalistOptions">
         </div>
         <datalist id="datalistOptions">
+          <option value="smkn-12-jakarta">SMKN 12 Jakarta</option>
           <option v-for="school in schools" :value="school.sekolah">{{ school.sekolah }}</option>
           <!-- <option value="a"></option> -->
         </datalist>
