@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const baseUrl = "http://localhost:3000"
-// const baseUrl = "https://scholarpal-server-garudahack4-0907b3bb5a06.herokuapp.com"
+// const baseUrl = "http://localhost:3000"
+const baseUrl = "https://scholarpal-server-garudahack4-0907b3bb5a06.herokuapp.com"
 
 
 export const useMainStore = defineStore('store', {
@@ -20,7 +20,6 @@ export const useMainStore = defineStore('store', {
     async fetchSchool() {
       let { data } = await axios.get("https://api-sekolah-indonesia.vercel.app/sekolah?page=1&perPage=5");
       this.schools = data.dataSekolah
-      console.log(this.schools)
     },
     async gsign(google_token) {
       try {
