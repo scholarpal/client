@@ -1,5 +1,13 @@
+<script>
+export default {
+  mounted() {
+    let nav = document.getElementById("navbar")
+    nav.classList.add("bg-dark");
+  }
+}
+</script>
 <template>
-  <div class="container">
+  <div class="container pt-5">
     <div class="d-flex gap-4 justify-content-center align-items-center py-1 px-2 rounded my-5">
       <RouterLink
         class="d-flex gap-2 text-decoration-none text-white justify-content-center align-items-center py-1 px-2 rounded"

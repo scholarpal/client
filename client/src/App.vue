@@ -1,11 +1,23 @@
 <script>
 export default {
-  name: "App"
+  name: "App",
+  mounted() {
+    let nav = document.getElementById("navbar")
+    document.addEventListener('scroll', () => {
+      console.log("ke trigger..");
+      if (window.scrollY >= nav.getBoundingClientRect().height) {
+        nav.classList.add("bg-dark");
+      } else {
+        nav.classList.remove("bg-dark");
+      }
+    })
+
+  }
 }
 </script>
 
 <template>
-  <nav :class="{ 'navbar-bg': !showBG }" class="navbar navbar-expand-lg fixed-top" v-on:scroll="">
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top" v-on:scroll="">
     <div class="container">
       <RouterLink class="navbar-brand fw-bold" to="/">
         <h3 class="text-white">ScholarPal</h3>
@@ -29,8 +41,10 @@ export default {
             </a>
           </span>
           <span class="d-flex gap-3" v-if="!isLogin">
-            <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log in</a>
-            <a data-bs-toggle="modal" data-bs-target="#SignUp" class="btn btn-light bg-white fw-bold rounded-pill px-4">Sign Up</a>
+            <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log
+              in</a>
+            <a data-bs-toggle="modal" data-bs-target="#SignUp"
+              class="btn btn-light bg-white fw-bold rounded-pill px-4">Sign Up</a>
           </span>
         </div>
       </div>
@@ -55,18 +69,20 @@ export default {
               <input type="number" class="form-control rounded-pill w-100" placeholder="Enter your phone number">
               <input type="password" class="form-control rounded-pill w-100" placeholder="Create a password">
             </form>
-            <a data-bs-target="#SignUp2" data-bs-dismiss="modal" data-bs-toggle="modal" class="btn btn-dark rounded-pill py-2 w-100">Continue</a>
+            <a data-bs-target="#SignUp2" data-bs-dismiss="modal" data-bs-toggle="modal"
+              class="btn btn-dark rounded-pill py-2 w-100">Continue</a>
           </div>
         </div>
 
         <div class="d-flex justify-content-center mb-4">
-          <p>Already have an account? <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#LogIn" class="text-decoration-none fw-bold">Log In</a></p>
+          <p>Already have an account? <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#LogIn"
+              class="text-decoration-none fw-bold">Log In</a></p>
         </div>
       </div>
     </div>
   </div>
 
-  
+
   <div class="modal fade" id="SignUp2" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -88,7 +104,7 @@ export default {
     </div>
   </div>
 
-  
+
   <div class="modal fade" id="LogIn" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -110,7 +126,8 @@ export default {
         </div>
 
         <div class="d-flex justify-content-center mb-4">
-          <p>Don't have an account? <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#SignUp" class="text-decoration-none fw-bold">Sign Up</a></p>
+          <p>Don't have an account? <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#SignUp"
+              class="text-decoration-none fw-bold">Sign Up</a></p>
         </div>
       </div>
     </div>
@@ -121,11 +138,13 @@ export default {
 .navbar {
   transition: 0.2s all ease-in-out;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .navbar.nav-bg {
   background-color: white;
 }
