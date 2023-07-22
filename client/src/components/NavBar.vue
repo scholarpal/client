@@ -27,26 +27,34 @@ export default {
   <nav id="navbar" class="navbar navbar-expand-lg fixed-top" v-on:scroll="">
     <div class="container">
       <RouterLink class="navbar-brand fw-bold" to="/">
-        <h3 class="text-white">ScholarPal</h3>
+        <!-- <h3 class="text-white">ScholarPal</h3> -->
+        <img src="../assets/logo_scholarpal_inv.png" alt="" class="img-fluid" style="width: 2rem;">
       </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <RouterLink class="nav-link" to="/">Home</RouterLink>
-          <RouterLink class="nav-link" to="/events">Events</RouterLink>
-          <RouterLink class="nav-link" to="/profile" v-if="isLogin">Profile</RouterLink>
+        <div class="navbar-nav gap-3">
+          <RouterLink class="nav-link fw-bold" to="/">Home</RouterLink>
+          <RouterLink class="nav-link fw-bold" to="/events">Events</RouterLink>
+          <RouterLink class="nav-link fw-bold" to="/profile" v-if="isLogin">Profile</RouterLink>
         </div>
         <div class="ms-auto">
 
-          <span class="d-flex gap-3 align-items-center" v-if="isLogin">
-            <img class="rounded-circle img-fluid border border-white border-2 text-white" style="width: 3rem;"
-              src="@/assets/user.png" alt="">
-            <span class="text-white"><b>@USERNAME</b></span>
+          <div class="dropdown">
+            <a href="#" data-bs-toggle="dropdown" aria-expanded="false"
+              class="d-flex gap-3 align-items-center text-decoration-none" v-if="isLogin">
+              <img class="rounded-circle img-fluid border border-white border-2 text-white" style="width: 3rem;"
+                src="../assets/user.png" alt="">
+              <span class="text-white"><b>@USERNAME</b></span>
+            </a>
 
-          </span>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><RouterLink class="dropdown-item fw-bold" to="/profile">Profile</RouterLink></li>
+              <li><RouterLink class="dropdown-item text-danger fw-bold" to="/">Log Out</RouterLink></li>
+            </ul>
+          </div>
           <span class="d-flex gap-3" v-if="!isLogin">
             <a data-bs-toggle="modal" data-bs-target="#LogIn" class="btn btn-light bg-white fw-bold rounded-pill px-4">Log
               in</a>

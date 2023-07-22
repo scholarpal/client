@@ -1,11 +1,20 @@
 <script>
 import axios from "axios"
 import NavBar from "./components/NavBar.vue"
+import { useMainStore } from "./stores/store.js"
+import { mapActions } from "pinia"
+import { VueElement } from "vue"
 export default {
   components: {
     NavBar
   },
+  data(){
+    return {
+      schools : []
+    }
+  },
   methods: {
+    ...mapActions(useMainStore,["fetchSchool"]),
     handleCredentialResponse(response) {
       document.getElementsByClassName("btn-close")[0].click()
       document.getElementsByClassName("continue-otp")[0].click()
@@ -15,13 +24,18 @@ export default {
       })
         .then(data => {
           console.log(data);
-        })
+      })
         .catch(err => {
-          console.log(err);
+          console.log(err); 
         })
     }
   },
+  async created(){
+    this.fetchSchool()
+  },
   mounted() {
+   
+
     google.accounts.id.initialize({
       client_id: "74889742184-2dkn63tpgecjde551g8j9lqkn5or0o7t.apps.googleusercontent.com",
       callback: this.handleCredentialResponse

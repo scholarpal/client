@@ -1,8 +1,13 @@
 <script>
+import { mapState } from 'pinia'
+import { useMainStore } from '../stores/store'
 export default {
+  computed: {
+    ...mapState(useMainStore, ["isLogin","schools"])
+  },
   data() {
     return {
-      name: "Avatar"
+      
     }
   },
 }
@@ -12,14 +17,18 @@ export default {
     <div class="d-flex justify-content-center align-items-center flex-column mx-auto" style="height: 90%; width: 44%;">
       <h1 class="display-6 fw-bold mb-4 text-white" style="font-family: 'Inter',sans-serif;">Enter your school to get
         started</h1>
-      <form action="" class="w-100">
+      <form action="" class="w-100" autocomplete="off">
         <div class="input-group rounded-pill">
           <span class="input-group-text rounded-pill rounded-end-0 border-0" id="search">
             <h5 class="mb-0 ms-3"><i class="fa fa-solid fa-school"></i></h5>
           </span>
           <input type="text" class="form-control rounded-pill rounded-start-0 py-3 border-0 px-2" id="search"
-            placeholder="Search your school">
+            placeholder="Search your school" list="datalistOptions">
         </div>
+        <datalist id="datalistOptions">
+          <option v-for="school in schools" :value="school.sekolah">{{ school.sekolah }}</option>
+          <!-- <option value="a"></option> -->
+        </datalist>
         <input type="submit" hidden>
       </form>
     </div>
@@ -32,18 +41,16 @@ export default {
         <h2>Become a ScholarPal today!</h2>
       </div>
       <div class="row text-center" v-else>
-        <h1 class="fw-bold">Welcome Back {{ name }}</h1>
+        <h1 class="fw-bold">Welcome Back @USERNAME</h1>
         <h2>Glad to see you back here!</h2>
       </div>
       <div class="row align-items-stretch gap-3 justify-content-center mt-5">
         <div class="col-5 d-flex flex-column justify-content-center align-items-center gap-4">
-          <img class="img-fluid" width="55%"
-            src="../assets/editing.png" alt="">
+          <img class="img-fluid" width="55%" src="../assets/editing.png" alt="">
           <h3 class="fw-bold text-center mt-auto">Manage and edit your ratings</h3>
         </div>
         <div class="col-5 d-flex flex-column justify-content-center align-items-center gap-4">
-          <img class="img-fluid" width="55%"
-            src="../assets/anonymous.svg" alt="">
+          <img class="img-fluid" width="55%" src="../assets/anonymous.svg" alt="">
           <h3 class="fw-bold text-center mt-auto">Your ratings are always anonymous</h3>
         </div>
       </div>
@@ -63,13 +70,12 @@ export default {
 
   <footer class="bg-dark py-4">
     <div class="container">
+      <div class="mb-3" style="width: 100%; background-color: white; height: 1px;"></div>
       <div class="d-flex align-items-center justify-content-stretch">
-        <div>
-          <RouterLink to="/" class="text-decoration-none">
-            <h1 class="text-white">ScholarPal</h1>
-          </RouterLink>
-          <p class="text-white mb-0">Ⓒ 2023 ScholarPal, All Rights Reserved</p>
-        </div>
+        <RouterLink to="/" class="text-decoration-none">
+          <img src="@/assets/logo_scholarpal_inv.png" alt="" class="img-fluid me-4" style="width: 2rem;">
+        </RouterLink>
+        <p class="text-white mb-0">Ⓒ 2023 ScholarPal, All Rights Reserved</p>
         <div class="ms-auto d-flex gap-4">
           <a class="text-decoration-none text-white" href="https://www.twitter.com">
             <h3 class="mb-0"><i class="fa fa-solid fa-twitter"></i></h3>

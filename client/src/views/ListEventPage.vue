@@ -19,7 +19,7 @@ export default {
       </RouterLink>
       <RouterLink
         class="d-flex gap-2 text-decoration-none text-white justify-content-center align-items-center py-1 px-2 rounded"
-        style="background-color: #874475;" to="/events/scholarship">
+        style="background-color: #723762;" to="/events/scholarship">
         <i class="fa fa-solid fa-school"></i>
         <span>Scholarship</span>
       </RouterLink>
@@ -31,7 +31,7 @@ export default {
       </RouterLink>
       <RouterLink
         class="d-flex gap-2 text-decoration-none text-white justify-content-center align-items-center py-1 px-2 rounded"
-        style="background-color: #874475;" to="/events/volunteer">
+        style="background-color: #723762;" to="/events/volunteer">
         <i class="fa fa-solid fa-handshake-angle "></i>
         <span>Volunteer</span>
       </RouterLink>
@@ -43,7 +43,7 @@ export default {
       </RouterLink>
       <RouterLink
         class="d-flex gap-2 text-decoration-none text-white justify-content-center align-items-center py-1 px-2 rounded"
-        style="background-color: #874475;" to="/events/meetup">
+        style="background-color: #723762;" to="/events/meetup">
         <i class="fa fa-solid fa-people-roof"></i>
         <span>MeetUp</span>
       </RouterLink>
