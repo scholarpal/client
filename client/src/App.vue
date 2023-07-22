@@ -2,7 +2,7 @@
 import axios from "axios"
 import NavBar from "./components/NavBar.vue"
 import { useMainStore } from "./stores/store.js"
-import { mapActions } from "pinia"
+import { mapActions, mapWritableState } from "pinia"
 export default {
   components: {
     NavBar
@@ -12,6 +12,9 @@ export default {
       schools: []
     }
   },
+  computed: {
+    ...mapWritableState(useMainStore, ["isLogin"])
+  },
   methods: {
     ...mapActions(useMainStore, ["fetchSchool", "gsign"]),
     handleCredentialResponse(response) {
@@ -19,6 +22,9 @@ export default {
     }
   },
   async created() {
+    if (localStorage.getItem("access_token")) {
+      this.isLogin = true
+    }
     this.fetchSchool()
   },
   mounted() {
@@ -45,5 +51,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#app>div>section.row.mt-4>div.col-8.my-1.px-4>div.mb-5.d-flex.flex-column.justify-content-center.gap-3>form>div.mb-2.bg-white>div.ql-container.ql-snow>div.ql-editor.ql-blank {
+  min-height: 100px !important;
 }
 </style>

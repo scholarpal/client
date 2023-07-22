@@ -15,11 +15,6 @@ const router = createRouter({
       component: LandingPage
     },
     {
-      path: '/schools',
-      name: 'list-school',
-      component: ListSchoolPage
-    },
-    {
       path: '/schools/:slug',
       name: 'school-detail',
       component: DetailSchoolPage

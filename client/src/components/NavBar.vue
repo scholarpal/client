@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { useMainStore } from '../stores/store'
 
 export default {
@@ -9,14 +9,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(useMainStore, ["isLogin"])
-  },
-  watch: {
-    isLogin(value) {
-      if (value) {
-        this.username = localStorage.username
+    ...mapState(useMainStore, ["isLogin"]),
+    username() {
+      if (this.isLogin) {
+        return localStorage.getItem("username")
+      } else {
+        return ""
       }
     }
+  },
+  methods: {
+    ...mapActions(useMainStore, ["logOut"])
   },
   mounted() {
     let nav = document.getElementById("navbar")
@@ -48,13 +51,12 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav gap-3">
-          <RouterLink class="nav-link fw-bold" to="/">Home</RouterLink>
+          <RouterLink class="nav-link fw-bold" to="/">Scholarpal</RouterLink>
           <RouterLink class="nav-link fw-bold" to="/events">Events</RouterLink>
-          <RouterLink class="nav-link fw-bold" to="/profile" v-if="isLogin">Profile</RouterLink>
         </div>
         <div class="ms-auto">
 
-          <div class="dropdown">
+          <div class="dropdown" v-if="isLogin">
             <a href="#" data-bs-toggle="dropdown" aria-expanded="false"
               class="d-flex gap-3 align-items-center text-decoration-none" v-if="isLogin">
               <img class="rounded-circle img-fluid border border-white border-2 text-white" style="width: 3rem;"
@@ -67,14 +69,12 @@ export default {
                 <RouterLink class="dropdown-item fw-bold" to="/profile">Profile</RouterLink>
               </li>
               <li>
-                <RouterLink class="dropdown-item text-danger fw-bold" to="/">Log Out</RouterLink>
+                <a @click.prevent="logOut" class="dropdown-item text-danger fw-bold">Log Out</a>
               </li>
             </ul>
           </div>
-          <span class="d-flex gap-3" v-if="!isLogin">
-            <div class="g_id_signin">
-            </div>
-          </span>
+          <div class="g_id_signin" v-show="!isLogin">
+          </div>
         </div>
       </div>
     </div>

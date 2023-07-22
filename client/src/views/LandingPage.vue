@@ -1,15 +1,18 @@
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { useMainStore } from '../stores/store'
 export default {
   computed: {
-    ...mapState(useMainStore, ["isLogin","schools"])
+    ...mapState(useMainStore, ["isLogin", "schools"])
   },
   data() {
     return {
-      
+      input: ""
     }
   },
+  methods: {
+    ...mapActions(useMainStore, [""])
+  }
 }
 </script>
 <template>
@@ -17,13 +20,13 @@ export default {
     <div class="d-flex justify-content-center align-items-center flex-column mx-auto" style="height: 90%; width: 44%;">
       <h1 class="display-6 fw-bold mb-4 text-white" style="font-family: 'Inter',sans-serif;">Enter your school to get
         started</h1>
-      <form action="" class="w-100" autocomplete="off">
+      <form @submit.prevent="" action="" class="w-100" autocomplete="off">
         <div class="input-group rounded-pill">
           <span class="input-group-text rounded-pill rounded-end-0 border-0" id="search">
             <h5 class="mb-0 ms-3"><i class="fa fa-solid fa-school"></i></h5>
           </span>
-          <input type="text" class="form-control rounded-pill rounded-start-0 py-3 border-0 px-2" id="search"
-            placeholder="Search your school" list="datalistOptions">
+          <input v-model="input" type="text" class="form-control rounded-pill rounded-start-0 py-3 border-0 px-2"
+            id="search" placeholder="Search your school" list="datalistOptions">
         </div>
         <datalist id="datalistOptions">
           <option v-for="school in schools" :value="school.sekolah">{{ school.sekolah }}</option>
