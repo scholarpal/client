@@ -1,8 +1,10 @@
 <script>
 export default {
   mounted() {
-    let nav = document.getElementById("navbar")
-    nav.classList.add("bg-dark");
+    if (this.$route.path !== "/") {
+      let nav = document.getElementById("navbar")
+      nav.classList.add("bg-dark");
+    }
   }
 }
 </script>

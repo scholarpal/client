@@ -6,19 +6,20 @@ export default {
     }
   },
   mounted() {
-    let nav = document.getElementById("navbar")
-    document.addEventListener('scroll', () => {
-      console.log("ke trigger..");
-      if (window.scrollY >= nav.getBoundingClientRect().height) {
-        nav.classList.add("bg-dark");
-      } else {
-        nav.classList.remove("bg-dark");
-      }
-    })
-
+    if (this.$route.path == "/") {
+      let nav = document.getElementById("navbar")
+      document.addEventListener('scroll', () => {
+        console.log("ke trigger..");
+        if (window.scrollY >= nav.getBoundingClientRect().height) {
+          nav.classList.add("bg-dark");
+        } else {
+          nav.classList.remove("bg-dark");
+        }
+      })
+    } else {
+      document.getElementById("navbar").classList.add("bg-dark");
+    }
   }
-
-
 }
 </script>
 <template>
@@ -117,4 +118,5 @@ export default {
 .form-control:focus {
   outline: none;
   box-shadow: none;
-}</style>
+}
+</style>

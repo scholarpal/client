@@ -32,6 +32,10 @@ export default {
     QuillEditor
   },
   mounted() {
+    if (this.$route.path !== "/") {
+      let nav = document.getElementById("navbar")
+      nav.classList.add("bg-dark");
+    }
     var mapProp = {
       center: new google.maps.LatLng(51.508742, -0.120850),
       zoom: 5,
@@ -41,7 +45,7 @@ export default {
 }
 </script>
 <template>
-  <div class="container-lg">
+  <div class="container-lg" style="padding-top: 67px;">
     <section class="row " style="height: 320px;">
       <img class="col-4 object-fit-cover h-100" style="height: 100%;"
         src="https://labschool-unj.sch.id/wp-content/uploads/2021/07/smp-labschool-jakarta.jpg" alt="">
