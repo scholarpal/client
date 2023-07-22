@@ -161,7 +161,7 @@ export default {
             </div>
             <div class="d-flex justify-content-end align-items-end">
               <button @click.prevent="submitCreateComment" type="submit" class="btn px-3 text-white fw-bold"
-                value="Submit" style="background-color: #98bbc1;">
+                value="Submit" style="background-color: #98bbc1;">Submit
               </button>
             </div>
 

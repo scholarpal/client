@@ -10,7 +10,7 @@ export default {
       <h4 style="height: 100px;">{{ data.title }}</h4>
       <p>{{ data.time }}</p>
     </div>
-    <span class="bg-white rounded p-1 text-sm category">Scholarship</span>
+    <span class="bg-white rounded p-1 text-sm category">{{ data.category }}</span>
   </a>
 </template>
 

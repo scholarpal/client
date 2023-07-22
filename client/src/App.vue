@@ -19,13 +19,7 @@ export default {
     ...mapActions(useMainStore, ["fetchSchool", "gsign"]),
     handleCredentialResponse(response) {
       this.gsign(response.credential)
-    },
-    toLandingPage() {
-      this.$router.push("/")
-    },
-    logoutNow() {
-      this.logOut(this.toLandingPage)
-    },
+    }
 
   },
   async created() {
@@ -36,7 +30,7 @@ export default {
   },
   mounted() {
     google.accounts.id.initialize({
-      client_id: "74889742184-2dkn63tpgecjde551g8j9lqkn5or0o7t.apps.googleusercontent.com",
+      client_id: "530234543525-4k7kpttt34ffe8o6ofs9qu5r9mdta9gf.apps.googleusercontent.com",
       callback: this.handleCredentialResponse
     });
     google.accounts.id.renderButton(
