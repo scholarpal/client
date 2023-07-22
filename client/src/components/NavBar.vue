@@ -19,7 +19,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useMainStore, ["logOut"])
+    ...mapActions(useMainStore, ["logOut"]),
+    toLandingPage() {
+      this.$router.push("/")
+    },
+    logoutNow() {
+      this.logOut(this.toLandingPage)
+    },
   },
   mounted() {
     let nav = document.getElementById("navbar")
@@ -69,7 +75,7 @@ export default {
                 <RouterLink class="dropdown-item fw-bold" to="/profile">Profile</RouterLink>
               </li>
               <li>
-                <a @click.prevent="logOut" class="dropdown-item text-danger fw-bold">Log Out</a>
+                <a @click.prevent="logoutNow" class="dropdown-item text-danger fw-bold">Log Out</a>
               </li>
             </ul>
           </div>

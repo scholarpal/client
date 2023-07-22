@@ -68,7 +68,7 @@ export default {
 
     }
     var mapProp = {
-      center: new google.maps.LatLng(51.508742, -0.120850),
+      center: new google.maps.LatLng(-6.1149000, 106.8861000),
       zoom: 5,
     };
     new google.maps.Map(document.getElementById("googleMap"), mapProp);

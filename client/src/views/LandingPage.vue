@@ -11,7 +11,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useMainStore, [""])
+    ...mapActions(useMainStore, [""]),
+    moveSlug() {
+      this.$router.push("/schools/" + this.input)
+    }
   }
 }
 </script>
@@ -20,7 +23,7 @@ export default {
     <div class="d-flex justify-content-center align-items-center flex-column mx-auto" style="height: 90%; width: 44%;">
       <h1 class="display-6 fw-bold mb-4 text-white" style="font-family: 'Inter',sans-serif;">Enter your school to get
         started</h1>
-      <form @submit.prevent="" action="" class="w-100" autocomplete="off">
+      <form @submit.prevent="moveSlug" action="" class="w-100" autocomplete="off">
         <div class="input-group rounded-pill">
           <span class="input-group-text rounded-pill rounded-end-0 border-0" id="search">
             <h5 class="mb-0 ms-3"><i class="fa fa-solid fa-school"></i></h5>

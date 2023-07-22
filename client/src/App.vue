@@ -19,7 +19,14 @@ export default {
     ...mapActions(useMainStore, ["fetchSchool", "gsign"]),
     handleCredentialResponse(response) {
       this.gsign(response.credential)
-    }
+    },
+    toLandingPage() {
+      this.$router.push("/")
+    },
+    logoutNow() {
+      this.logOut(this.toLandingPage)
+    },
+
   },
   async created() {
     if (localStorage.getItem("access_token")) {
@@ -28,8 +35,6 @@ export default {
     this.fetchSchool()
   },
   mounted() {
-
-
     google.accounts.id.initialize({
       client_id: "74889742184-2dkn63tpgecjde551g8j9lqkn5or0o7t.apps.googleusercontent.com",
       callback: this.handleCredentialResponse
@@ -51,9 +56,5 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-#app>div>section.row.mt-4>div.col-8.my-1.px-4>div.mb-5.d-flex.flex-column.justify-content-center.gap-3>form>div.mb-2.bg-white>div.ql-container.ql-snow>div.ql-editor.ql-blank {
-  min-height: 100px !important;
 }
 </style>

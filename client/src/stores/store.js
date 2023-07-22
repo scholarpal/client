@@ -13,9 +13,10 @@ export const useMainStore = defineStore('store', {
     myRates: []
   }),
   actions: {
-    logOut() {
+    logOut(cb) {
       localStorage.clear()
       this.isLogin = false
+      cb()
     },
     async fetchSchool() {
       let { data } = await axios.get("https://api-sekolah-indonesia.vercel.app/sekolah?page=1&perPage=5");
