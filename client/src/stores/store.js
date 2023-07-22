@@ -10,7 +10,8 @@ export const useMainStore = defineStore('store', {
     isLogin: false,
     schools: [],
     schoolDetail: {},
-    myRates: []
+    myRates: [],
+    dataEvent: []
   }),
   actions: {
     logOut(cb) {
@@ -21,6 +22,17 @@ export const useMainStore = defineStore('store', {
     async fetchSchool() {
       let { data } = await axios.get("https://api-sekolah-indonesia.vercel.app/sekolah?page=1&perPage=5");
       this.schools = data.dataSekolah
+    },
+    async fetchEvents() {
+      try {
+        let { data } = await axios({
+          method: "GET",
+          url: baseUrl + "/events"
+        })
+        this.dataEvent = data
+      } catch (error) {
+        console.log(error)
+      }
     },
     async gsign(google_token) {
       try {

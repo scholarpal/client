@@ -16,17 +16,19 @@ export default {
     ...mapWritableState(useMainStore, ["isLogin"])
   },
   methods: {
-    ...mapActions(useMainStore, ["fetchSchool", "gsign"]),
+    ...mapActions(useMainStore, ["fetchSchool", "gsign", "fetchEvents"]),
     handleCredentialResponse(response) {
       this.gsign(response.credential)
     }
 
   },
   async created() {
+    await this.fetchEvents()
     if (localStorage.getItem("access_token")) {
       this.isLogin = true
     }
-    this.fetchSchool()
+    await this.fetchSchool()
+
   },
   mounted() {
     google.accounts.id.initialize({
