@@ -35,7 +35,7 @@ const router = createRouter({
         },
         {
           name: 'filter-event',
-          path: "/:category",
+          path: ":category",
           component: ChildEvent
         }
       ]

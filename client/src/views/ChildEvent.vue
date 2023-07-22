@@ -1,14 +1,30 @@
 <script>
-export default {
-  data() {
-    return {
+import dataEvent from "../../data/event.json"
 
+import CardEvent from "../components/CardEvent.vue";
+
+export default {
+  computed: {
+    events() {
+      if (!this.$route.params.category) {
+        return dataEvent
+      } else {
+        let result = dataEvent.filter(el => {
+          return el.category.toLowerCase() == this.$route.params.category.toLowerCase()
+        })
+        return result
+      }
     }
+  },
+  components: {
+    CardEvent
   }
 }
 </script>
 <template>
-  <h1>{{ $route.params.category }}</h1>
+  <div class="d-flex flex-wrap gap-5 pb-5 mb-5">
+    <CardEvent v-for="event in events" :data="event" :key="event.id" />
+  </div>
 </template>
 
 <style scoped>
