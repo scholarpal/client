@@ -3,7 +3,7 @@
 Web client with Vue
 
 List page : 
-- `/` Landing page 
+- [X] `/` Landing page ✅
 - `/profile` User profile page 
 - `/schools` List school page 
 - `/schools/:slug` Detail school page include rating and comments 
