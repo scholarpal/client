@@ -1,10 +1,25 @@
 <script>
 export default {
   name: "App",
+  mounted() {
+    let nav = document.getElementById("navbar")
+
+    if (document.URL !== "http://localhost:5173/" && document.URL !== "http://localhost:5173/profile") {
+      nav.classList.add("bg-dark");
+    }
+    document.addEventListener('scroll', () => {
+      if (document.URL == "http://localhost:5173/") {
+        if (window.scrollY >= nav.getBoundingClientRect().height) {
+          nav.classList.add("bg-dark");
+        } else {
+          nav.classList.remove("bg-dark");
+        }
+      }
+    })
+  }
 
 }
 </script>
-
 <template>
   <nav id="navbar" class="navbar navbar-expand-lg fixed-top" v-on:scroll="">
     <div class="container">
@@ -18,7 +33,6 @@ export default {
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <RouterLink class="nav-link" to="/">Home</RouterLink>
-          <RouterLink class="nav-link" to="/schools">Schools</RouterLink>
           <RouterLink class="nav-link" to="/events">Events</RouterLink>
           <RouterLink class="nav-link" to="/profile">Profile</RouterLink>
         </div>
@@ -133,9 +147,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.navbar-nav .nav-link{
+
+.navbar-nav .nav-link {
   color: white !important;
 }
+
 .navbar.nav-bg {
   background-color: white;
 }

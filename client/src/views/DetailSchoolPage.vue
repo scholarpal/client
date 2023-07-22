@@ -43,7 +43,7 @@ export default {
 }
 </script>
 <template>
-  <div class="container-lg">
+  <div class="container-lg" style="padding-top: 67px;">
     <section class="row " style="height: 320px;">
       <img class="col-4 object-fit-cover h-100" style="height: 100%;"
         src="https://labschool-unj.sch.id/wp-content/uploads/2021/07/smp-labschool-jakarta.jpg" alt="">
